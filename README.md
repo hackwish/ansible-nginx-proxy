@@ -10,7 +10,7 @@ You can change the default Index.html, simple put youre index.html in
 
 templates/index.html under youre Playbook.
 
-and setup Variable:
+and setup the Variable:
 
 nginx_proxy_custom_index: index.html
 
