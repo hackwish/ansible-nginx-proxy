@@ -15,7 +15,7 @@ and setup the Variable:
 nginx_proxy_custom_index: index.html
 
 
-Default options:
+Default options: <br>
       # default for nginx-proxy site Config <br>
       nginx_proxy_pass: http://localhost:8080                 #
       nginx_proxy_server_name: "{{ ansible_hostname }}"       # name of the Site
