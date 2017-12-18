@@ -16,7 +16,7 @@ nginx_proxy_custom_index: index.html
 
 
 Default options:
-      # default for nginx-proxy site Config
+      # default for nginx-proxy site Config <br>
       nginx_proxy_pass: http://localhost:8080                 #
       nginx_proxy_server_name: "{{ ansible_hostname }}"       # name of the Site
       nginx_proxy_conf_name: site.conf                        # name of the conf fife
