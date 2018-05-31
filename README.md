@@ -6,7 +6,7 @@ This Role configures Nginx as Proxy for a single Site.
 
 Some default Options are set.
 
-You can change the default Index.html, simple put youre index.html in
+You can change the default Index.html, simple put your index.html in
 
 templates/index.html under youre Playbook.
 
