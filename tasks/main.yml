@@ -12,14 +12,14 @@
 
 - local_action: stat path=templates/{{ nginx_proxy_custom_index }}
   become: False
-  register: nginx_sites_exist
+  when: nginx_proxy_custom_index is defined
 
 - name: setup Custom default Page
   template:
     src: "{{ nginx_proxy_custom_index }}"
     dest: /var/www/html/index.html
   notify: reload nginx daemon
-  when: nginx_sites_exist.stat.exists == true
+  when: nginx_proxy_custom_index is defined
 
 - name: Remove Default symlink
   file:
