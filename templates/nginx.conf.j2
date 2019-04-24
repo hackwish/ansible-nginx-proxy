@@ -11,3 +11,7 @@ proxy_buffer_size {{ nginx_proxy_buffer_size }};
 proxy_buffers {{ nginx_proxy_buffers }};
 proxy_busy_buffers_size {{ nginx_proxy_busy_buffers_size }};
 proxy_temp_file_write_size {{ nginx_proxy_temp_file_write_size }};
+
+proxy_buffering {{ nginx_proxy_buffering }};
+proxy_request_buffering   {{ nginx_proxy_request_buffering }}; # Required for HTTP CLI commands in Jenkins > 2.54
+proxy_set_header {{ nginx_proxy_set_header }}; # Clear for keepalive

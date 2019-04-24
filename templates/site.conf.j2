@@ -4,9 +4,34 @@ server {
     if ($host != "{{ nginx_proxy_server_name }}") {
         return 301 {{ nginx_proxy_server_name }};
     }
+    
     access_log {{ nginx_proxy_logdir }}/{{ nginx_proxy_server_name }}.access.log;
+    error_log  {{ nginx_proxy_logdir }}/{{ nginx_proxy_server_name }}.error.log;
+    
+    ignore_invalid_headers {{ nginx_ignore_invalid_headers }};
+
+    location ~ "^/static/[0-9a-fA-F]{8}\/(.*)$" {
+        #rewrite all static files into requests to the root
+        #E.g /static/12345678/css/something.css will become /css/something.css
+        rewrite "^/static/[0-9a-fA-F]{8}\/(.*)" /$1 last;
+    }
+
     location {{ nginx_proxy_location }} {
+      sendfile {{ nginx_sendfile }};
+
       proxy_pass {{ nginx_proxy_pass }};
       proxy_redirect default;
+      proxy_http_version {{ nginx_proxy_http_version }};
+
+      proxy_set_header   Host              $host;
+      proxy_set_header   X-Real-IP         $remote_addr;
+      proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+      proxy_set_header   X-Forwarded-Proto $scheme;
+      
+      proxy_max_temp_file_size {{ nginx_proxy_max_temp_file_size }};
+
+      #this is the maximum upload size
+      client_max_body_size       {{ nginx_client_max_body_size }};
+      client_body_buffer_size    {{ nginx_client_body_buffer_size }};    
     }
 }
