@@ -1,3 +1,5 @@
+{{ ansible_managed | comment }}
+
 server {
   listen {{ nginx_proxy_http_port }};
     server_name {{ nginx_proxy_server_name }};
@@ -41,7 +43,7 @@ server {
         sendfile {{ nginx_sendfile }};
 
      	proxy_pass {{ nginx_proxy_pass }};
-        proxy_redirect default;
+        proxy_redirect {{ nginx_proxy_redirect }};
         proxy_http_version {{ nginx_proxy_http_version }};
 
         proxy_set_header   Host              $host;

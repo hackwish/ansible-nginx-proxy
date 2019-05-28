@@ -15,6 +15,8 @@ nginx_ignore_invalid_headers: 'off'
 nginx_client_max_body_size: '10m'
 nginx_client_body_buffer_size: '128k'
 
+nginx_proxy_redirect: "{{ proxy_redirect | default('default') }}"
+
 # defaults file for nginx-proxy
 nginx_proxy_max_temp_file_size: 0
 nginx_proxy_connect_timeout: 90

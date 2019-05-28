@@ -5,3 +5,5 @@
     name: nginx
     state: reloaded
     enabled: yes
+
+- meta: flush_handlers

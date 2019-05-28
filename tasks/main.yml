@@ -51,3 +51,5 @@
     dest: /etc/nginx/sites-enabled/{{ nginx_proxy_conf_name }}
     state: link
   notify: reload nginx daemon
+
+- meta: flush_handlers
